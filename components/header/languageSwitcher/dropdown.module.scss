@@ -1,0 +1,60 @@
+/* components/Header/LanguageSwitcher/dropdown.module.scss */
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  top: 40px;
+  position: absolute;
+  padding: 10px;
+  gap: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 10px;
+    padding: 5px;
+
+    &:hover {
+      background-color: #eaeaea;
+    }
+
+    img {
+      width: 32px;
+      height: 24px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+.selected-flag {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  img {
+    width: 32px;
+    height: 24px;
+  }
+
+  .arrow {
+    margin-left: 8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000;
+  }
+}
