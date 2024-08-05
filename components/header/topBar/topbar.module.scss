@@ -1,4 +1,15 @@
 .topBar {
-  display: flex;
-  justify-content: flex-end;
+  display: none;
+  font-size: 13px;
+
+  @media (min-width: 576px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (min-width: 992px) {
+    justify-content: flex-end;
+    gap: 10px;
+  }
 }

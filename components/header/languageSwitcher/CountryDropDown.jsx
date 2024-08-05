@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
-import Cookies from "js-cookie";
 import styles from "./dropdown.module.scss";
+import { LanguageContext } from "../../contexts/LanguageContext";
 
 const countries = [
   {
@@ -18,38 +17,36 @@ const countries = [
 ];
 
 const CountryDropDown = () => {
+  const { switchLanguage } = useContext(LanguageContext);
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const { i18n } = useTranslation();
-
-  useEffect(() => {
-    const storedLocale = Cookies.get("NEXT_LOCALE") || "cz";
-    const country = countries.find((c) => c.locale === storedLocale);
-    if (country) {
-      setSelectedCountry(country);
-      i18n.changeLanguage(storedLocale).then(() => {
-        console.log(
-          "Loaded Translations after language change:",
-          i18n.getResourceBundle(storedLocale, "common")
-        );
-      });
-    }
-  }, [i18n]);
+  const dropdownRef = useRef(null);
 
   const handleCountrySelect = (country) => {
     setSelectedCountry(country);
     setShowDropdown(false);
-    i18n.changeLanguage(country.locale).then(() => {
-      Cookies.set("NEXT_LOCALE", country.locale);
-      console.log(
-        "Loaded Translations after language change:",
-        i18n.getResourceBundle(country.locale, "common")
-      );
-    });
+    switchLanguage(country.locale);
   };
 
+  // Function to handle clicks outside the dropdown
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setShowDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    // Add event listener for clicks
+    document.addEventListener("click", handleClickOutside);
+
+    // Clean up event listener on component unmount
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div>
+    <div ref={dropdownRef}>
       <div
         className={styles["selected-flag"]}
         onClick={() => setShowDropdown(!showDropdown)}
