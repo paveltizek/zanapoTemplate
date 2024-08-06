@@ -1,0 +1,13 @@
+@import "./styles/variables";
+
+.headerStyle {
+  box-shadow: $myLightBoxShadow;
+  padding-bottom: $header-bottom-padding;
+  .infoMenu {
+    display: none;
+
+    @media (min-width: 431px) {
+      display: flex;
+    }
+  }
+}

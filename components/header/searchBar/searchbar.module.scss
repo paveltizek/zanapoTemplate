@@ -1,0 +1,43 @@
+@import "./styles/variables";
+
+.searchCol {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+  border: $header-icon-border;
+  border-top-left-radius: $my-border-radius;
+  border-top-right-radius: $my-border-radius;
+  border-bottom-left-radius: $my-border-radius;
+  border-bottom-right-radius: $searchbar-button-radius;
+
+  .searchIcon {
+    margin: 0 10px;
+  }
+
+  .searchInput {
+    flex-grow: 1;
+    border: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 7px;
+
+    height: 100%;
+  }
+
+  .searchButton {
+    background-color: $orange-color;
+    color: $white-color;
+    cursor: pointer;
+    border: none;
+    border-top-left-radius: $my-border-radius;
+    border-top-right-radius: $my-border-radius;
+    border-bottom-right-radius: $searchbar-button-radius;
+    opacity: 1;
+    box-sizing: border-box;
+
+    height: calc(100% - 20px);
+    padding: 10px;
+  }
+}

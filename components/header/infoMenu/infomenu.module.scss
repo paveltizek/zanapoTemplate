@@ -1,0 +1,18 @@
+@import "./styles/variables";
+
+.styledInfoMenu {
+  p {
+    a {
+      text-decoration: none;
+      padding-right: 10px;
+      font-size: 0.81rem;
+      font-weight: 700;
+      color: $black-color;
+
+      &:not(:last-child)::after {
+        content: "|";
+        padding: 0 4px;
+      }
+    }
+  }
+}
