@@ -8,6 +8,9 @@
       font-size: 0.81rem;
       font-weight: 700;
       color: $black-color;
+      &:hover {
+        color: $gold-color;
+      }
 
       &:not(:last-child)::after {
         content: "|";
