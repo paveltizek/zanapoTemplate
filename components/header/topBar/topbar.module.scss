@@ -1,6 +1,7 @@
 .topBar {
   display: none;
   font-size: 13px;
+  position: relative;
 
   @media (min-width: 576px) {
     display: flex;

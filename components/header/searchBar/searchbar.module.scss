@@ -13,11 +13,13 @@
   border-bottom-right-radius: $searchbar-button-radius;
 
   .searchIcon {
+    display: flex;
     margin: 0 10px;
   }
 
   .searchInput {
     flex-grow: 1;
+    display: flex;
     border: none;
     box-sizing: border-box;
     font-size: 16px;
@@ -39,5 +41,8 @@
 
     height: calc(100% - 20px);
     padding: 10px;
+    &:hover {
+      opacity: 0.85;
+    }
   }
 }

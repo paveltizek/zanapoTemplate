@@ -9,13 +9,26 @@
     display: flex;
     justify-content: center;
     fill: $header-icon-color;
-    position: relative;
+    align-items: center;
+    gap: 10px;
+
+    &:hover {
+      background-color: $grey-color;
+    }
+    .counterHeader {
+      position: relative;
+      display: flex;
+    }
+
     .counter {
       position: absolute;
       display: flex;
       justify-content: center;
-      top: 0px;
-      right: 2px;
+      // top: -12px;
+      // left: 20px;
+      top: -5px;
+      left: 15px;
+
       border-radius: 50%;
       color: $white-color;
       font-size: 13px;
@@ -27,6 +40,9 @@
     }
     #counterTwo {
       background-color: $dark-red-color;
+    }
+    #cartPrice {
+      display: none;
     }
     svg {
       width: $header-icon-size;
@@ -42,7 +58,28 @@
     fill: black;
   }
 
-  // @media (min-width: 768px) {
-  //   padding-bottom: 0; // Remove bottom padding on screens 768px and up
-  // }
+  @media (min-width: 651px) {
+    padding-bottom: 0;
+
+    .icon {
+      height: 100%;
+      min-height: 50px;
+      .counter {
+        top: -12px;
+        left: 20px;
+      }
+      #cartPrice {
+        display: flex;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .icon {
+      svg {
+        width: 32px;
+      }
+    }
+  }
 }

@@ -17,9 +17,13 @@ export const Header = () => {
     <header className={`${styles.headerStyle}`}>
       <div className="container">
         <TopBar />
-        <div class="row">
+        <div className="row">
           <div className="col-3 col-md-6 col-lg-3 order-2 order-md-1 d-none d-md-flex">
-            <img src={currentTranslations.logo} alt="" />
+            <img
+              src={currentTranslations.logo}
+              alt="logo"
+              className={`${styles.logo}`}
+            />
           </div>
           <div
             className={`col-md-6 col-lg-6 order-1 order-md-2 align-items-center ${styles.infoMenu}`}

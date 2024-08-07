@@ -1,7 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./searchbar.module.scss";
 
 export const SearchBar = () => {
+  useEffect(() => {
+    const inputElement = document.querySelector(`.${styles.searchInput}`);
+    const placeholderTexts = ["Dřevěné šachy", "Stolní hry", "Kouzelné čtění"];
+    let currentTextIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const type = () => {
+      const currentText = placeholderTexts[currentTextIndex];
+      if (isDeleting) {
+        if (charIndex > 0) {
+          charIndex--;
+          inputElement.placeholder = currentText.substring(0, charIndex);
+        } else {
+          isDeleting = false;
+          currentTextIndex = (currentTextIndex + 1) % placeholderTexts.length;
+        }
+      } else {
+        if (charIndex < currentText.length) {
+          charIndex++;
+          inputElement.placeholder = currentText.substring(0, charIndex);
+        } else {
+          isDeleting = true;
+        }
+      }
+      setTimeout(type, isDeleting ? 100 : 100); // Adjust speed of typing and deleting
+    };
+
+    type();
+  }, []);
+
   return (
     <div className={`col-12 ${styles.searchCol}`}>
       <div className={styles.searchIcon}>
