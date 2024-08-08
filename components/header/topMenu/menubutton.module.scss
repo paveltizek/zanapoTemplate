@@ -1,18 +1,17 @@
+// categoriesButton.module.scss
 @import "./styles/variables";
 
 .menuButton {
   display: none;
   position: relative;
+  cursor: pointer;
 
   @media (min-width: 992px) {
     display: flex;
-
     background: $grey-color;
     font-weight: 700;
-    //width: 80%;
     outline: 0;
     border: 2px solid $grey-color;
-    //justify-content: space-between;
     align-items: center;
     padding: 8px 20px;
     border-radius: $my-border-radius;
@@ -39,4 +38,23 @@
   @media (min-width: 1200px) {
     //width: 90%;
   }
+
+  &:hover .dropdown {
+    display: block;
+  }
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $white-color;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 1000;
+  border: 1px solid $grey-color;
 }

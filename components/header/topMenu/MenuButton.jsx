@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../contexts/DataContext";
 
-import styles from "./categories.module.scss";
+import Category from "./category/Category";
 
-export const Categories = () => {
+import styles from "./menubutton.module.scss";
+
+export const MenuButton = () => {
+  const { topMenu } = useContext(DataContext);
+
   return (
     <div className={`${styles.menuButton}`}>
       <svg
@@ -29,7 +34,12 @@ export const Categories = () => {
           strokeWidth="2"
         ></path>
       </svg>
-      {/* </div> */}
+      {/* Dropdown Menu */}
+      <ul className={styles.dropdown}>
+        {topMenu.map((category, index) => (
+          <Category key={index} category={category} />
+        ))}
+      </ul>
     </div>
   );
 };

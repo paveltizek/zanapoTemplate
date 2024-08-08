@@ -8,7 +8,7 @@ import { TopBar } from "./topBar/TopBar";
 import { IconMenu } from "./iconMenu/IconMenu";
 import { SearchBar } from "./searchBar/SearchBar";
 import { InfoMenu } from "./infoMenu/InfoMenu";
-import { Categories } from "./categories/Categories";
+import { MenuButton } from "./topMenu/MenuButton";
 
 export const Header = () => {
   const { currentTranslations } = useContext(LanguageContext);
@@ -26,7 +26,7 @@ export const Header = () => {
             />
           </div>
           <div
-            className={`col-md-6 col-lg-6 order-1 order-md-2 align-items-center ${styles.infoMenu}`}
+            className={`col-md-6 col-lg-6 order-1 order-md-2 align-items-end ${styles.infoMenu}`}
           >
             <InfoMenu />
           </div>
@@ -39,7 +39,7 @@ export const Header = () => {
             <SearchBar />
           </div>
           <div className="col-12 col-lg-3 order-3 order-md-5 order-lg-1">
-            <Categories />
+            <MenuButton />
           </div>
         </div>
       </div>

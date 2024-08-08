@@ -28,7 +28,6 @@ const CountryDropDown = () => {
     switchLanguage(country.locale);
   };
 
-  // Function to handle clicks outside the dropdown
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setShowDropdown(false);
@@ -36,10 +35,8 @@ const CountryDropDown = () => {
   };
 
   useEffect(() => {
-    // Add event listener for clicks
     document.addEventListener("click", handleClickOutside);
 
-    // Clean up event listener on component unmount
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
