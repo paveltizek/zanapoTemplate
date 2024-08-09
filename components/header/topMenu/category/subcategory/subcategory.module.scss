@@ -14,14 +14,15 @@
   //border: 1px solid #ddd;
   border-radius: $my-border-radius;
   //background-color: #f9f9f9;
-  box-shadow: $myMediumBoxShadow;
+  box-shadow: $myMenuBoxShadow;
+  border: solid 1px transparent;
 
   img {
-    width: 40px;
-    height: 40px;
+    // width: 60px;
+    // height: 60px;
     object-fit: cover;
     margin-bottom: 8px;
-    border-radius: 50%;
+    border-radius: 4px;
   }
 
   .subcategoryName {
@@ -31,6 +32,7 @@
   }
 
   &:hover {
-    background-color: #e0e0e0;
+    //background-color: #e0e0e0;
+    border: solid 1px $gold-color;
   }
 }

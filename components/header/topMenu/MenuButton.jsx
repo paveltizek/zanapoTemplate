@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../contexts/DataContext";
-
 import Category from "./category/Category";
-
 import styles from "./menubutton.module.scss";
 
 export const MenuButton = () => {
@@ -11,17 +9,16 @@ export const MenuButton = () => {
   return (
     <div className={`${styles.menuButton}`}>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="http://www.w0.org/2000/svg"
         width="28"
         height="28"
         viewBox="0 0 24 24"
       >
         <path d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"></path>
       </svg>
-      {/* <div className={`${styles.menuArrow}`}> */}
       <p>Menu</p>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
+        xmlns="http://www0.org/2000/svg"
         width="18"
         height="18"
         viewBox="0 0 24 24"

@@ -1,7 +1,6 @@
 @import "./styles/variables";
 
 .categoryItem {
-  position: relative;
   padding: 10px;
   transition: background-color 0.3s ease;
   cursor: pointer;
@@ -10,6 +9,17 @@
 
   &:hover {
     background-color: #f9f9f9;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(203, 149, 64, 0.04) 99%
+    );
+    box-shadow: $myMenuBoxShadow;
+    border-left: 3px solid $gold-color;
+    //position: relative;
+    z-index: 2000;
+    //margin-right: -40px;
   }
 
   .categoryContent {
@@ -28,14 +38,19 @@
   .subcategoryBlock {
     display: none;
     position: absolute;
+    z-index: -1;
+    //margin-left: 10px;
     top: 0;
     left: 100%;
     width: 800px;
     min-height: 100%;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ccc;
-    z-index: 1000;
+
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: $myMenuBoxShadow;
+
+    //border: 1px solid #ccc;
+    z-index: 500;
     padding: 10px;
     box-sizing: border-box;
     border-radius: $my-border-radius;
