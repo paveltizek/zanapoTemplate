@@ -5,6 +5,7 @@
   display: none;
   position: relative;
   cursor: pointer;
+  //z-index: 1000;
 
   @media (min-width: 992px) {
     display: flex;
@@ -61,6 +62,5 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  z-index: 1000;
   // border: 1px solid #ccc;
 }

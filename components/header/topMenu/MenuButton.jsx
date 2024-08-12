@@ -1,15 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import Category from "./category/Category";
 import styles from "./menubutton.module.scss";
 
 export const MenuButton = () => {
   const { topMenu } = useContext(DataContext);
+  const [hoveredCategoryName, setHoveredCategoryName] = useState(null);
+
+  const handleHover = (name) => {
+    setHoveredCategoryName(name);
+  };
+
+  const handleUnhover = () => {
+    setHoveredCategoryName(null);
+  };
+
+  const handleMenuLeave = () => {
+    setHoveredCategoryName(null);
+  };
 
   return (
-    <div className={`${styles.menuButton}`}>
+    <div className={styles.menuButton}>
       <svg
-        xmlns="http://www.w0.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
         width="28"
         height="28"
         viewBox="0 0 24 24"
@@ -18,11 +31,11 @@ export const MenuButton = () => {
       </svg>
       <p>Menu</p>
       <svg
-        xmlns="http://www0.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
         width="18"
         height="18"
         viewBox="0 0 24 24"
-        className={`${styles.arrow}`}
+        className={styles.arrow}
       >
         <path
           d="M8 10l4 4 4-4"
@@ -32,9 +45,15 @@ export const MenuButton = () => {
         ></path>
       </svg>
       {/* Dropdown Menu */}
-      <ul className={styles.dropdown}>
-        {topMenu.map((category, index) => (
-          <Category key={index} category={category} />
+      <ul className={styles.dropdown} onMouseLeave={handleMenuLeave}>
+        {topMenu.map((category) => (
+          <Category
+            key={category.name}
+            category={category}
+            isHovered={hoveredCategoryName === category.name}
+            onHover={() => handleHover(category.name)}
+            onUnhover={handleUnhover}
+          />
         ))}
       </ul>
     </div>

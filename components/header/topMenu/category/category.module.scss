@@ -2,12 +2,25 @@
 
 .categoryItem {
   padding: 10px;
-  transition: background-color 0.3s ease;
   cursor: pointer;
   display: flex;
   align-items: center;
+  //position: relative;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    border-left 0.3s ease;
 
-  &:hover {
+  .categoryContent {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 10px;
+    }
+  }
+
+  &.hovered {
     background-color: #f9f9f9;
     background: rgb(255, 255, 255);
     background: linear-gradient(
@@ -17,43 +30,28 @@
     );
     box-shadow: $myMenuBoxShadow;
     border-left: 3px solid $gold-color;
-    //position: relative;
-    z-index: 2000;
-    //margin-right: -40px;
-  }
-
-  .categoryContent {
-    display: flex;
-    align-items: center;
-    flex: 1;
-
-    img {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-      //border-radius: 50%;
-    }
+    margin-right: -40px;
+    z-index: 200; // Make sure this is higher than the submenu
   }
 
   .subcategoryBlock {
-    display: none;
     position: absolute;
-    z-index: -1;
-    //margin-left: 10px;
     top: 0;
     left: 100%;
     width: 800px;
-    min-height: 100%;
     background-color: white;
-
-    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100%;
     box-shadow: $myMenuBoxShadow;
-
-    //border: 1px solid #ccc;
-    z-index: 500;
     padding: 10px;
     box-sizing: border-box;
     border-radius: $my-border-radius;
+    list-style: none;
+    display: none;
+    z-index: 1; // Lower z-index to place behind the category item
+
+    &.visible {
+      display: block;
+    }
 
     ul {
       display: flex;
@@ -62,10 +60,37 @@
       margin: 0;
       padding: 0;
       height: 100%;
-    }
-  }
+      // transition: 0.3s ease;
 
-  &:hover .subcategoryBlock {
-    display: block;
+      .subcategoryItem {
+        padding: 10px;
+        margin: 5px;
+        transition: background-color 0.3s ease;
+        text-align: center;
+        flex: 1 1 calc(25% - 20px);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        //border: 1px solid #ddd;
+        border-radius: $my-border-radius;
+        //background-color: #f9f9f9;
+        box-shadow: $myMenuBoxShadow;
+        border: solid 1px transparent;
+
+        img {
+          //width: 80px;
+          object-fit: contain;
+          margin-bottom: 8px;
+          border-radius: 4px;
+        }
+
+        &:hover {
+          //background-color: #e0e0e0;
+          border: solid 1px $gold-color;
+        }
+      }
+    }
   }
 }
