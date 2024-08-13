@@ -21,17 +21,13 @@
   }
 
   &.hovered {
-    background-color: #f9f9f9;
-    background: rgb(255, 255, 255);
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(203, 149, 64, 0.04) 99%
-    );
-    box-shadow: $myMenuBoxShadow;
+    background-color: white;
+    //box-shadow: $myMenuBoxShadow;
     border-left: 3px solid $gold-color;
-    margin-right: -40px;
-    z-index: 200; // Make sure this is higher than the submenu
+    border-bottom: 1px solid $dark-grey-color;
+    border-top: 1px solid $dark-grey-color;
+    //margin-right: -40px;
+    z-index: 9999 !important; // Make sure this is higher than the submenu
   }
 
   .subcategoryBlock {
@@ -47,7 +43,8 @@
     border-radius: $my-border-radius;
     list-style: none;
     display: none;
-    z-index: 1; // Lower z-index to place behind the category item
+    margin-left: -1px;
+    z-index: -1 !important; // Lower z-index to place behind the category item
 
     &.visible {
       display: block;
@@ -60,6 +57,7 @@
       margin: 0;
       padding: 0;
       height: 100%;
+
       // transition: 0.3s ease;
 
       .subcategoryItem {

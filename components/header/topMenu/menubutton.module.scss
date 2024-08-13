@@ -5,7 +5,6 @@
   display: none;
   position: relative;
   cursor: pointer;
-  //z-index: 1000;
 
   @media (min-width: 992px) {
     display: flex;
@@ -48,6 +47,7 @@
 .dropdown {
   display: none;
   position: absolute;
+  z-index: 9999 !important;
   top: 100%;
   left: 0;
   background-color: $white-color;

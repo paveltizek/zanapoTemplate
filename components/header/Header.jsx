@@ -31,14 +31,14 @@ export const Header = () => {
             <InfoMenu />
           </div>
         </div>
-        <div className="row align-items-end px-0 ">
+        <div className="row align-items-end px-0">
           <div className="col-12 col-6 col-md-6 col-lg-3 order-1 order-md-3">
             <IconMenu />
           </div>
           <div className="col-12 col-md-6 col-lg-6 order-2">
             <SearchBar />
           </div>
-          <div className="col-12 col-lg-3 order-3 order-md-5 order-lg-1">
+          <div className="col-12 col-lg-3 order-3 order-md-5 order-lg-1 ">
             <MenuButton />
           </div>
         </div>
