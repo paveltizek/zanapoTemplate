@@ -17,6 +17,10 @@
       margin-left: 10px;
     }
   }
+
+  .mobilePosition {
+    position: relative;
+  }
   @media (min-width: 1200px) {
     box-shadow: $myLightBoxShadow;
   }

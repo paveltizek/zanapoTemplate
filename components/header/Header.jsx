@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <header className={`${styles.headerStyle}`}>
-      <div className="container">
+      <div className="container ">
         <TopBar />
         <div className="row">
           <div className="col-3 col-md-6 col-lg-3 order-2 order-md-1 d-none d-md-flex">
@@ -31,7 +31,7 @@ export const Header = () => {
             <InfoMenu />
           </div>
         </div>
-        <div className="row align-items-end px-0">
+        <div className={`row align-items-end px-0 ${styles.mobilePosition}`}>
           <div className="col-12 col-6 col-md-6 col-lg-3 order-1 order-md-3">
             <IconMenu />
           </div>

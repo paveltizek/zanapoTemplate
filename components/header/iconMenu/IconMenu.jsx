@@ -1,15 +1,19 @@
-import React, { useContext } from "react";
-import Image from "next/image";
-
+import React, { useContext, useState } from "react";
 import { LanguageContext } from "../../contexts/LanguageContext";
+import TopMenuMobile from "../topMenuMobile/TopMenuMobile";
 
 import styles from "./iconmenu.module.scss";
 
 export const IconMenu = () => {
   const { currentTranslations } = useContext(LanguageContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
-    <div className={`row align-items-center ${styles.iconmenu}`}>
+    <div className={`row align-items-center ${styles.iconmenu} `}>
       <div className={`col-4 d-md-none order-1 ${styles.icon}`}>
         <img src={currentTranslations.logo} alt="" />
       </div>
@@ -55,18 +59,36 @@ export const IconMenu = () => {
       </div>
 
       <div
-        className={`col-2 d-lg-none order-5 order-md-5 ${styles.icon}`}
+        className={`col-2 d-lg-none order-5 order-md-5 ${styles.icon} `}
         id={styles.mobileMenu}
+        onClick={toggleMenu} // Toggle menu on click
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="28"
-          height="28"
-          viewBox="0 0 24 24"
-        >
-          <path d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"></path>
-        </svg>
+        {isMenuOpen ? (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+          >
+            <path d="M6 18L18 6M6 6l12 12" strokeWidth="2" stroke="#ff4500" />
+          </svg>
+        ) : (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+          >
+            <path d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z" />
+          </svg>
+        )}
       </div>
+      {/* Render TopMenuMobile conditionally */}
+      {isMenuOpen && (
+        <div className={styles.menuWrapper}>
+          <TopMenuMobile />
+        </div>
+      )}
     </div>
   );
 };

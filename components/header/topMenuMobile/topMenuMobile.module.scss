@@ -1,0 +1,90 @@
+// topmenumobile.module.scss
+
+@import "./styles/variables";
+
+.mobileMenuContainer {
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: $white-color;
+  overflow-y: auto;
+}
+
+.dropdownMenu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileMenuItem {
+  padding: 10px 20px;
+  border-bottom: 1px solid $grey-color;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    background-color: $grey-color;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.categoryIcon {
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+}
+
+.expandIcon {
+  font-size: 20px;
+  cursor: pointer;
+  color: $orange-color;
+  display: inline-block;
+  margin-left: auto;
+
+  &:hover {
+    color: $orange-color;
+  }
+}
+
+.subcategoryList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  overflow: visible;
+
+  & > .subcategoryItem {
+    width: calc(50% - 10px);
+    //padding: 5px;
+    box-sizing: border-box;
+
+    @media (min-width: 576px) {
+      width: calc(33.33% - 10px);
+    }
+  }
+}
+
+.subcategoryItem {
+  font-size: 14px;
+  margin: 2px;
+
+  &:hover {
+    color: $black-color;
+    background-color: $grey-color;
+  }
+}
+
+.expanded {
+  .subcategoryList {
+    max-height: none;
+    transition: none;
+  }
+}

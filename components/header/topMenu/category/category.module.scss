@@ -5,7 +5,6 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  //position: relative;
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     border-left 0.3s ease;
 
@@ -14,37 +13,41 @@
     align-items: center;
     flex: 1;
     img {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       margin-right: 10px;
     }
   }
-
   &.hovered {
-    background-color: white;
-    //box-shadow: $myMenuBoxShadow;
+    background-color: $topMenu-backgroud;
     border-left: 3px solid $gold-color;
-    border-bottom: 1px solid $dark-grey-color;
-    border-top: 1px solid $dark-grey-color;
-    //margin-right: -40px;
-    z-index: 9999 !important; // Make sure this is higher than the submenu
+    border-bottom: 1px solid $topMenu-border-color;
+    z-index: 9999 !important;
   }
 
+  &:not(:first-child).hovered {
+    border-top: 1px solid $topMenu-border-color;
+  }
+
+  &:last-child.hovered {
+    border-bottom: none;
+  }
   .subcategoryBlock {
     position: absolute;
     top: 0;
     left: 100%;
     width: 800px;
-    background-color: white;
+    background-color: $topMenu-backgroud;
     min-height: 100%;
     box-shadow: $myMenuBoxShadow;
     padding: 10px;
     box-sizing: border-box;
-    border-radius: $my-border-radius;
+    border-top-right-radius: $my-border-radius;
+    border-bottom-right-radius: $my-border-radius;
+
     list-style: none;
     display: none;
-    margin-left: -1px;
-    z-index: -1 !important; // Lower z-index to place behind the category item
+    z-index: -1 !important;
 
     &.visible {
       display: block;
@@ -58,8 +61,6 @@
       padding: 0;
       height: 100%;
 
-      // transition: 0.3s ease;
-
       .subcategoryItem {
         padding: 10px;
         margin: 5px;
@@ -71,11 +72,10 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        //border: 1px solid #ddd;
         border-radius: $my-border-radius;
-        //background-color: #f9f9f9;
         box-shadow: $myMenuBoxShadow;
         border: solid 1px transparent;
+        background-color: white;
 
         img {
           //width: 80px;
@@ -85,7 +85,6 @@
         }
 
         &:hover {
-          //background-color: #e0e0e0;
           border: solid 1px $gold-color;
         }
       }

@@ -5,6 +5,7 @@
   padding-bottom: $header-icon-bottom-padding;
   font-size: 25px;
   cursor: pointer;
+  //position: relative;
 
   .icon {
     display: flex;
@@ -57,7 +58,19 @@
 
   #mobileMenu {
     fill: black;
+    &:hover {
+      background-color: white;
+    }
   }
+
+  // .menuWrapper {
+  //   width: 100%;
+  //   position: absolute;
+  //   top: 100%; // Positioned directly below the header
+  //   left: 0;
+  //   z-index: 1000;
+  //   background-color: $white-color;
+  // }
 
   @media (min-width: 651px) {
     padding-bottom: 0;

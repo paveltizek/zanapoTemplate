@@ -57,10 +57,7 @@ const Category = ({ category, onHover, onUnhover, isHovered }) => {
       onMouseLeave={handleCategoryMouseLeave}
     >
       <div className={styles.categoryContent}>
-        <img
-          src={`https://test.zanapo.cz/${category.image}`}
-          alt={category.name}
-        />
+        <img src={`https://zanapo.cz/${category.image}`} alt={category.name} />
         {category.name}
       </div>
       <div
@@ -75,7 +72,7 @@ const Category = ({ category, onHover, onUnhover, isHovered }) => {
             category.subcategories.map((subcategory) => (
               <li key={subcategory.name} className={styles.subcategoryItem}>
                 <Image
-                  src={`https://test.zanapo.cz/${subcategory.image}`}
+                  src={`https://zanapo.cz/${subcategory.image}`}
                   alt={subcategory.name}
                   width={60}
                   height={60}
