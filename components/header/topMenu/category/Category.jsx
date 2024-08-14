@@ -2,17 +2,28 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./category.module.scss";
 
-const Category = ({ category, onHover, onUnhover, isHovered }) => {
+const Category = ({
+  category,
+  onHover,
+  onUnhover,
+  isHovered,
+  hoveredCategoryName,
+}) => {
   const [hoverTimeout, setHoverTimeout] = useState(null);
   const [subCategoryHovered, setSubCategoryHovered] = useState(false);
 
   const handleCategoryMouseEnter = () => {
+    if (hoveredCategoryName === category.name) {
+      return;
+    }
+
     if (hoverTimeout) {
       clearTimeout(hoverTimeout);
     }
+
     const timeoutId = setTimeout(() => {
-      onHover();
-    }, 400); // Delay before adding hover effect
+      onHover(category.name);
+    }, 100);
     setHoverTimeout(timeoutId);
   };
 
@@ -20,26 +31,32 @@ const Category = ({ category, onHover, onUnhover, isHovered }) => {
     if (hoverTimeout) {
       clearTimeout(hoverTimeout);
     }
+
     const timeoutId = setTimeout(() => {
-      if (!subCategoryHovered) {
-        onUnhover();
+      if (!subCategoryHovered && hoveredCategoryName === category.name) {
+        onUnhover(category.name);
       }
-    }, 400); // Delay before removing hover effect
+    }, 100);
     setHoverTimeout(timeoutId);
   };
 
   const handleSubCategoryMouseEnter = () => {
     setSubCategoryHovered(true);
+
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+    }
   };
 
   const handleSubCategoryMouseLeave = () => {
     setSubCategoryHovered(false);
-    // Delay before removing hover effect
-    setTimeout(() => {
-      if (!subCategoryHovered) {
-        onUnhover();
+
+    const timeoutId = setTimeout(() => {
+      if (!subCategoryHovered && hoveredCategoryName === category.name) {
+        onUnhover(category.name);
       }
-    }, 400);
+    }, 100);
+    setHoverTimeout(timeoutId);
   };
 
   useEffect(() => {
