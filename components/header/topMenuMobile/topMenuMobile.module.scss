@@ -1,90 +1,110 @@
-// topmenumobile.module.scss
-
 @import "./styles/variables";
 
-.mobileMenuContainer {
-  width: 100%;
-  position: absolute;
-  top: 100%;
+.overlay {
+  position: fixed;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 25, 25, 0.8);
   z-index: 1000;
-  background-color: $white-color;
-  overflow-y: auto;
-}
-
-.dropdownMenu {
-  list-style: none;
-  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
   padding: 0;
+  margin: 0;
 }
 
-.mobileMenuItem {
-  padding: 10px 20px;
-  border-bottom: 1px solid $grey-color;
+.mobileMenuContainer {
+  background-color: $white-color;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  box-shadow: $myMenuBoxShadow;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
   display: flex;
   flex-direction: column;
 
-  &:hover {
-    background-color: $grey-color;
-  }
-}
+  .mobileHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    box-shadow: $myLightBoxShadow;
+    font-size: 16px;
 
-.categoryHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
+    p {
+      flex-grow: 1;
+      text-align: center;
+    }
 
-.categoryIcon {
-  width: 28px;
-  height: 28px;
-  margin-right: 10px;
-}
+    button {
+      background: none;
+      border: none;
+      svg {
+        stroke: red;
+      }
+    }
 
-.expandIcon {
-  font-size: 20px;
-  cursor: pointer;
-  color: $orange-color;
-  display: inline-block;
-  margin-left: auto;
-
-  &:hover {
-    color: $orange-color;
-  }
-}
-
-.subcategoryList {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  overflow: visible;
-
-  & > .subcategoryItem {
-    width: calc(50% - 10px);
-    //padding: 5px;
-    box-sizing: border-box;
-
-    @media (min-width: 576px) {
-      width: calc(33.33% - 10px);
+    .closeButton {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      color: black;
     }
   }
-}
 
-.subcategoryItem {
-  font-size: 14px;
-  margin: 2px;
-
-  &:hover {
-    color: $black-color;
-    background-color: $grey-color;
+  &.active {
+    transform: translateX(0);
   }
-}
 
-.expanded {
-  .subcategoryList {
-    max-height: none;
-    transition: none;
+  .menuContent {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .sliding {
+    transform: translateX(-100%);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 10px 10px;
+    padding-left: 20px;
+    box-shadow: $myLightBoxShadow;
+    font-size: 14px;
+    // &:hover {
+    //   background-color: $grey-color;
+    // }
+
+    div {
+      gap: 10px;
+      display: flex;
+      align-items: center;
+
+      span {
+        flex-grow: 1;
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: $orange-color;
+      font-weight: bolder;
+      cursor: pointer;
+
+      .svgIcon {
+        fill: currentColor;
+      }
+    }
   }
 }

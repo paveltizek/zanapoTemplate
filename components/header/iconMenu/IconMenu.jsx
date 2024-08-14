@@ -12,6 +12,10 @@ export const IconMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className={`row align-items-center ${styles.iconmenu} `}>
       <div className={`col-4 d-md-none order-1 ${styles.icon}`}>
@@ -63,32 +67,17 @@ export const IconMenu = () => {
         id={styles.mobileMenu}
         onClick={toggleMenu} // Toggle menu on click
       >
-        {isMenuOpen ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-          >
-            <path d="M6 18L18 6M6 6l12 12" strokeWidth="2" stroke="#ff4500" />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-          >
-            <path d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z" />
-          </svg>
-        )}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="28"
+          height="28"
+          viewBox="0 0 24 24"
+        >
+          <path d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z" />
+        </svg>
       </div>
       {/* Render TopMenuMobile conditionally */}
-      {isMenuOpen && (
-        <div className={styles.menuWrapper}>
-          <TopMenuMobile />
-        </div>
-      )}
+      {isMenuOpen && <TopMenuMobile onClose={handleCloseMenu} />}
     </div>
   );
 };
