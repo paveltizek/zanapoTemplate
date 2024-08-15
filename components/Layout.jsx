@@ -1,12 +1,14 @@
 import React from "react";
 import { Header } from "./header/Header";
+import { Banner } from "./banner/Banner";
+// import { TopCategories } from "./topCategories/TopCategories";
 
 export const Layout = ({ children }) => {
   return (
     <>
       <Header />
-      {/* <main>{children}</main> */}
-      {/* Add footer or other layout components if needed */}
+      <Banner />
+      {/* <TopCategories /> */}
     </>
   );
 };

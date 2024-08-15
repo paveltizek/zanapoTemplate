@@ -4,15 +4,25 @@ export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [topMenu, setTopMenu] = useState([]);
+  const [topCategories, setTopCategories] = useState([]);
+  // const [elements, setElements] = useState([]);
 
   useEffect(() => {
-    console.log("saved topMenu categories", topMenu);
+    console.log("Saved topMenu categories", topMenu);
   }, [topMenu]);
+
+  useEffect(() => {
+    console.log("Saved topCategories", topCategories);
+  }, [topCategories]);
+
+  // useEffect(() => {
+  //   console.log("Saved Elements", elements);
+  // }, [elements]);
 
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://crappie-enormous-noticeably.ngrok-free.app/api/v1/homepage/content",
+        "https://crappie-enormous-noticeably.ngrok-free.app/api/v1/homepage/content?sections=sachy&elements=toplinks,tips,favouritecategories",
         {
           method: "GET",
           headers: {
@@ -32,6 +42,14 @@ export const DataProvider = ({ children }) => {
       if (jsonData.top_menu && jsonData.top_menu.categories) {
         setTopMenu(jsonData.top_menu.categories);
       }
+
+      if (jsonData.top_categories) {
+        setTopCategories(jsonData.top_categories);
+      }
+
+      // if (jsonData.elements) {
+      //   setElements(jsonData.elements);
+      // }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -42,6 +60,8 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ topMenu }}>{children}</DataContext.Provider>
+    <DataContext.Provider value={{ topMenu, topCategories }}>
+      {children}
+    </DataContext.Provider>
   );
 };
