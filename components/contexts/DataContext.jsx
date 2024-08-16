@@ -5,6 +5,7 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [topMenu, setTopMenu] = useState([]);
   const [topCategories, setTopCategories] = useState([]);
+  const [sections, setSections] = useState([]);
   // const [elements, setElements] = useState([]);
 
   useEffect(() => {
@@ -15,6 +16,10 @@ export const DataProvider = ({ children }) => {
     console.log("Saved topCategories", topCategories);
   }, [topCategories]);
 
+  useEffect(() => {
+    console.log("Saved sections", sections);
+  }, [sections]);
+
   // useEffect(() => {
   //   console.log("Saved Elements", elements);
   // }, [elements]);
@@ -22,7 +27,7 @@ export const DataProvider = ({ children }) => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        "https://crappie-enormous-noticeably.ngrok-free.app/api/v1/homepage/content?sections=sachy&elements=toplinks,tips,favouritecategories",
+        "https://crappie-enormous-noticeably.ngrok-free.app/api/v1/homepage/content?sections=51,55&elements=toplinks,tips,favouritecategories",
         {
           method: "GET",
           headers: {
@@ -47,6 +52,10 @@ export const DataProvider = ({ children }) => {
         setTopCategories(jsonData.top_categories);
       }
 
+      if (jsonData.sections) {
+        setSections(jsonData.sections);
+      }
+
       // if (jsonData.elements) {
       //   setElements(jsonData.elements);
       // }
@@ -60,7 +69,7 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ topMenu, topCategories }}>
+    <DataContext.Provider value={{ topMenu, topCategories, sections }}>
       {children}
     </DataContext.Provider>
   );

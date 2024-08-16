@@ -1,6 +1,7 @@
 @import "./styles/variables";
 
 .searchCol {
+  font-family: $globalFont;
   display: flex;
   align-items: center;
   width: 100%;
@@ -18,14 +19,13 @@
   }
 
   .searchInput {
-    flex-grow: 1;
-    display: flex;
+    flex: 1 1 auto; // Allows the input to grow and shrink
     border: none;
     box-sizing: border-box;
     font-size: 16px;
     padding: 7px;
-
     height: 100%;
+    min-width: 0; // Ensures input can shrink if necessary
   }
 
   .searchButton {
@@ -41,8 +41,29 @@
 
     height: calc(100% - 20px);
     padding: 10px;
+    flex: 0 0 auto; // Prevents the button from growing but allows it to shrink
+    min-width: 60px; // Minimum width to keep the button usable
     &:hover {
       opacity: 0.85;
+    }
+  }
+
+  // Responsive adjustments for very small screens
+  @media screen and (max-width: 320px) {
+    padding: 2px;
+
+    .searchButton {
+      padding: 5px;
+      min-width: 50px; // Further reduces minimum width on very small screens
+    }
+
+    .searchIcon {
+      margin: 0 5px; // Reduce margins to save space
+    }
+
+    .searchInput {
+      font-size: 14px; // Slightly smaller font size for small screens
+      padding: 5px;
     }
   }
 }
