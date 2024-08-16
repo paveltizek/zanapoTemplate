@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./carousel.module.scss";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Carousel = ({ section }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -23,7 +22,7 @@ export const Carousel = ({ section }) => {
       if (width <= 550) return 1;
       if (width <= 900) return 2;
       if (width <= 1200) return 3; // New breakpoint for screens between 900px and 1200px
-      return 5;
+      return 4;
     };
 
     handleResize();
@@ -47,7 +46,7 @@ export const Carousel = ({ section }) => {
   };
 
   return (
-    <section className="container">
+    <section className={`container ${styles.carouselContainer}`}>
       <div className={styles.carouselWrapper}>
         <h2 className={styles.carouselHeader}>{section.name}</h2>
         <div className={styles.carouselInnerWrapper}>
