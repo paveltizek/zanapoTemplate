@@ -6,6 +6,7 @@ export const DataProvider = ({ children }) => {
   const [topMenu, setTopMenu] = useState([]);
   const [topCategories, setTopCategories] = useState([]);
   const [sections, setSections] = useState([]);
+  const [blogPosts, setBlogPosts] = useState([]);
   // const [elements, setElements] = useState([]);
 
   useEffect(() => {
@@ -19,6 +20,10 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     console.log("Saved sections", sections);
   }, [sections]);
+
+  useEffect(() => {
+    console.log("Saved blogPosts", blogPosts);
+  }, [blogPosts]);
 
   // useEffect(() => {
   //   console.log("Saved Elements", elements);
@@ -56,6 +61,10 @@ export const DataProvider = ({ children }) => {
         setSections(jsonData.sections);
       }
 
+      if (jsonData.blog_posts) {
+        setBlogPosts(jsonData.blog_posts);
+      }
+
       // if (jsonData.elements) {
       //   setElements(jsonData.elements);
       // }
@@ -69,7 +78,9 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   return (
-    <DataContext.Provider value={{ topMenu, topCategories, sections }}>
+    <DataContext.Provider
+      value={{ topMenu, topCategories, sections, blogPosts }}
+    >
       {children}
     </DataContext.Provider>
   );

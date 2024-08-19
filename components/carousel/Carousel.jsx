@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./carousel.module.scss";
 
+import { Label } from "./labels/Label";
+import { Ratings } from "./ratings/Ratings";
+
 export const Carousel = ({ section }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
@@ -20,8 +23,8 @@ export const Carousel = ({ section }) => {
     const getVisibleItems = () => {
       const width = window.innerWidth;
       if (width <= 550) return 1;
-      if (width <= 900) return 2;
-      if (width <= 1200) return 3; // New breakpoint for screens between 900px and 1200px
+      if (width <= 1000) return 2;
+      if (width <= 1200) return 3;
       return 4;
     };
 
@@ -73,11 +76,28 @@ export const Carousel = ({ section }) => {
                 >
                   <div className={styles.product}>
                     <img
-                      src={product.image || "https://via.placeholder.com/150"}
+                      src={`https://zanapo.cz/${product.image}`}
                       alt={product.name}
                     />
                     <h3>{product.name}</h3>
+
+                    {product.rating_average && (
+                      <Ratings
+                        ratingAverage={product.rating_average}
+                        ratingCount={product.rating_count}
+                      />
+                    )}
                     <p className={styles.price}>{product.price_f}</p>
+                    <div className={styles.labelsContainer}>
+                      {product.labels &&
+                        product.labels.map((label, labelIndex) => (
+                          <Label
+                            key={labelIndex}
+                            title={label.title}
+                            color={label.color}
+                          />
+                        ))}
+                    </div>
                   </div>
                 </div>
               ))}

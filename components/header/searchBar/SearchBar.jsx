@@ -27,7 +27,7 @@ export const SearchBar = () => {
           isDeleting = true;
         }
       }
-      setTimeout(type, isDeleting ? 100 : 100); // Adjust speed of typing and deleting
+      setTimeout(type, isDeleting ? 100 : 100);
     };
 
     type();

@@ -6,7 +6,7 @@
       text-decoration: none;
       padding-right: 5px;
       font-size: 0.81rem;
-      font-weight: 700;
+      font-weight: $infoMenu-font-weight;
       color: $black-color;
       &:hover {
         color: $gold-color;

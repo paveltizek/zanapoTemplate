@@ -9,7 +9,7 @@
   @media (min-width: 992px) {
     display: flex;
     background: $grey-color;
-    font-weight: 700;
+    //font-weight: 700;
     outline: 0;
     border: 2px solid $grey-color;
     align-items: center;
@@ -32,6 +32,7 @@
     p {
       margin: 0;
       flex-grow: 1;
+      font-weight: 400;
     }
   }
 
@@ -55,6 +56,7 @@
   box-shadow: $myMenuBoxShadow;
   border-bottom-left-radius: $my-border-radius;
   border-bottom-right-radius: $my-border-radius;
+  font-weight: $topMenu-font-weight;
 
   //border: 1px solid #ccc;
 
