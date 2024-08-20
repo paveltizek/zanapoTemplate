@@ -9,9 +9,25 @@ export const Ratings = ({ ratingAverage, ratingCount }) => {
 
     return (
       <>
-        {Array(fullStars).fill(<span className={styles.star}>★</span>)}
-        {halfStar && <span className={styles.star}>☆</span>}
-        {Array(emptyStars).fill(<span className={styles.star}>☆</span>)}
+        {Array(fullStars)
+          .fill(null)
+          .map((_, index) => (
+            <span key={`full-${index}`} className={styles.star}>
+              ★
+            </span>
+          ))}
+        {halfStar && (
+          <span key="half" className={styles.star}>
+            ☆
+          </span>
+        )}
+        {Array(emptyStars)
+          .fill(null)
+          .map((_, index) => (
+            <span key={`empty-${index}`} className={styles.star}>
+              ☆
+            </span>
+          ))}
       </>
     );
   };

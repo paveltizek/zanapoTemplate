@@ -75,7 +75,7 @@
   max-width: 200px;
   height: 330px;
   margin: 0 auto;
-  box-shadow: $myMenuBoxShadow;
+  //box-shadow: $myMenuBoxShadow;
 
   @media (min-width: 1200px) {
     width: 80%;
@@ -98,6 +98,7 @@
   &:hover {
     //border: 1px solid $orange-color;
     transform: translateY(-5px);
+    box-shadow: $myMenuBoxShadow;
     //box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
   }
 

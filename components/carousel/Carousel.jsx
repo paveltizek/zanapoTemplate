@@ -22,7 +22,8 @@ export const Carousel = ({ section }) => {
 
     const getVisibleItems = () => {
       const width = window.innerWidth;
-      if (width <= 550) return 1;
+      if (width <= 500) return 1;
+      if (width <= 750) return 2;
       if (width <= 1000) return 3;
       if (width <= 1200) return 4;
       return 5;
@@ -53,13 +54,14 @@ export const Carousel = ({ section }) => {
       <div className={styles.carouselWrapper}>
         <h2 className={styles.carouselHeader}>{section.name}</h2>
         <div className={styles.carouselInnerWrapper}>
-          <button
-            className={`${styles.carouselButton} ${styles.prevButton}`}
-            onClick={prev}
-            disabled={currentIndex === 0}
-          >
-            {"<"}
-          </button>
+          {currentIndex > 0 && (
+            <button
+              className={`${styles.carouselButton} ${styles.prevButton}`}
+              onClick={prev}
+            >
+              {"<"}
+            </button>
+          )}
           <div className={styles.carouselViewport} ref={carouselRef}>
             <div
               className={styles.carouselInner}
@@ -83,6 +85,7 @@ export const Carousel = ({ section }) => {
 
                     {product.rating_average && (
                       <Ratings
+                        index={index}
                         ratingAverage={product.rating_average}
                         ratingCount={product.rating_count}
                       />
@@ -103,13 +106,14 @@ export const Carousel = ({ section }) => {
               ))}
             </div>
           </div>
-          <button
-            className={`${styles.carouselButton} ${styles.nextButton}`}
-            onClick={next}
-            disabled={currentIndex >= section.products.length - visibleItems}
-          >
-            {">"}
-          </button>
+          {currentIndex < section.products.length - visibleItems && (
+            <button
+              className={`${styles.carouselButton} ${styles.nextButton}`}
+              onClick={next}
+            >
+              {">"}
+            </button>
+          )}
         </div>
       </div>
     </section>

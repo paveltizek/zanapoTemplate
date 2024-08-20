@@ -6,6 +6,8 @@ import { BlogPosts } from "./blogposts/BlogPosts";
 
 import { DataContext } from "./contexts/DataContext";
 
+import { ElementTest } from "./elementTest/ElementTest";
+
 export const Layout = ({ children }) => {
   const { sections } = useContext(DataContext);
 
@@ -17,6 +19,8 @@ export const Layout = ({ children }) => {
         <Carousel key={index} section={section} />
       ))}
       <BlogPosts />
+
+      <ElementTest />
 
       {/* <TopCategories /> */}
     </>

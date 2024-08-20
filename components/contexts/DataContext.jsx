@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 export const DataContext = createContext();
 
@@ -7,29 +8,10 @@ export const DataProvider = ({ children }) => {
   const [topCategories, setTopCategories] = useState([]);
   const [sections, setSections] = useState([]);
   const [blogPosts, setBlogPosts] = useState([]);
-  // const [elements, setElements] = useState([]);
+  const [elements, setElements] = useState([]);
+  const router = useRouter();
 
-  useEffect(() => {
-    console.log("Saved topMenu categories", topMenu);
-  }, [topMenu]);
-
-  useEffect(() => {
-    console.log("Saved topCategories", topCategories);
-  }, [topCategories]);
-
-  useEffect(() => {
-    console.log("Saved sections", sections);
-  }, [sections]);
-
-  useEffect(() => {
-    console.log("Saved blogPosts", blogPosts);
-  }, [blogPosts]);
-
-  // useEffect(() => {
-  //   console.log("Saved Elements", elements);
-  // }, [elements]);
-
-  const fetchData = async () => {
+  const fetchHomepageData = async () => {
     try {
       const response = await fetch(
         "https://crappie-enormous-noticeably.ngrok-free.app/api/v1/homepage/content?sections=51,55&elements=toplinks,tips,favouritecategories",
@@ -47,7 +29,7 @@ export const DataProvider = ({ children }) => {
 
       const jsonData = await response.json();
 
-      console.log("Fetched data:", jsonData);
+      console.log("Fetched homepage data:", jsonData);
 
       if (jsonData.top_menu && jsonData.top_menu.categories) {
         setTopMenu(jsonData.top_menu.categories);
@@ -65,21 +47,30 @@ export const DataProvider = ({ children }) => {
         setBlogPosts(jsonData.blog_posts);
       }
 
-      // if (jsonData.elements) {
-      //   setElements(jsonData.elements);
-      // }
+      if (jsonData.elements) {
+        setElements(jsonData.elements);
+      }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching homepage data:", error);
     }
   };
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (router.pathname === "/") {
+      fetchHomepageData();
+    }
+  }, [router.pathname]);
 
   return (
     <DataContext.Provider
-      value={{ topMenu, topCategories, sections, blogPosts }}
+      value={{
+        topMenu,
+        topCategories,
+        sections,
+        blogPosts,
+        elements,
+        setTopMenu,
+      }}
     >
       {children}
     </DataContext.Provider>
