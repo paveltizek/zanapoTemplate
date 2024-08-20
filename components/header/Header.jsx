@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <header className={`${styles.headerStyle}`}>
-      <div className="container ">
+      <div className="container-fluid">
         <TopBar />
         <div className="row">
           <div className="col-3 col-md-6 col-lg-3 order-2 order-md-1 d-none d-md-flex">

@@ -73,7 +73,7 @@ export const Banner = () => {
   };
 
   return (
-    <section id={styles.bannerWrapper} className="container">
+    <section id={styles.bannerWrapper} className="container-fluid">
       <div className={styles.imageContainer}>
         <div
           className={styles.slider}

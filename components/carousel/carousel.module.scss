@@ -77,6 +77,10 @@
   margin: 0 auto;
   box-shadow: $myMenuBoxShadow;
 
+  @media (min-width: 1200px) {
+    width: 80%;
+  }
+
   .labelsContainer {
     position: absolute;
     top: 0;

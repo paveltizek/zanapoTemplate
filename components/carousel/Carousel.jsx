@@ -23,9 +23,9 @@ export const Carousel = ({ section }) => {
     const getVisibleItems = () => {
       const width = window.innerWidth;
       if (width <= 550) return 1;
-      if (width <= 1000) return 2;
-      if (width <= 1200) return 3;
-      return 4;
+      if (width <= 1000) return 3;
+      if (width <= 1200) return 4;
+      return 5;
     };
 
     handleResize();
@@ -49,7 +49,7 @@ export const Carousel = ({ section }) => {
   };
 
   return (
-    <section className={`container ${styles.carouselContainer}`}>
+    <section className={`container-fluid ${styles.carouselContainer}`}>
       <div className={styles.carouselWrapper}>
         <h2 className={styles.carouselHeader}>{section.name}</h2>
         <div className={styles.carouselInnerWrapper}>

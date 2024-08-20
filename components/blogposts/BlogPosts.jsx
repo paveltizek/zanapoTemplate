@@ -7,7 +7,7 @@ export const BlogPosts = () => {
   const { blogPosts } = useContext(DataContext);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       {blogPosts.map((post, index) => (
         <div className="blogPost" key={index}>
           <p>{post.title}</p>
