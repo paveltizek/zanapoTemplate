@@ -1,10 +1,13 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useRouter } from "next/router";
 import { DataContext } from "../components/contexts/DataContext";
 import { CategoryLayout } from "../components/CategoryLayout";
 
+import styles from "./slug.module.scss";
+
 const CategoryPage = ({ category, topMenu }) => {
   const { setTopMenu } = useContext(DataContext);
+  const [showLongDescription, setShowLongDescription] = useState(false);
 
   useEffect(() => {
     if (topMenu && setTopMenu) {
@@ -15,22 +18,43 @@ const CategoryPage = ({ category, topMenu }) => {
   console.log("Fetched category data:", category);
 
   if (!category) {
-    return <div>Category not found</div>;
+    return <div>Kategorie nenalezena</div>;
   }
 
+  const toggleDescription = () => {
+    setShowLongDescription((prevState) => !prevState);
+  };
+
   return (
-    <div>
-      <h1>{category.name}</h1>
-      <div dangerouslySetInnerHTML={{ __html: category.description }} />
+    <div className={styles.contentWrapper}>
+      <div className="container-fluid">
+        <h2>{category.name}</h2>
+        <div
+          dangerouslySetInnerHTML={{ __html: category.description_short }}
+          className="left-side_off col-md-7 col-lg-7"
+        />
+
+        {category.description != null && (
+          <>
+            <button onClick={toggleDescription}>Dlouhe</button>
+            {showLongDescription && (
+              <div
+                dangerouslySetInnerHTML={{ __html: category.description }}
+                className="left-side_off col-md-7 col-lg-7"
+              />
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 };
-
 export async function getServerSideProps({ params }) {
   const { slug } = params;
 
+  // Fetch the category data based on the slug (which now represents the category ID)
   const res = await fetch(
-    `https://crappie-enormous-noticeably.ngrok-free.app/api/v1/category/detail/51`
+    `http://pavel-fedora.tailcfce08.ts.net:8000/api/v1/category/detail/${slug}`
   );
 
   const data = await res.json();

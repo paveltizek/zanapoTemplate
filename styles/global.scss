@@ -9,6 +9,25 @@ p {
   min-width: 260px;
 }
 
-.container-fluid {
-  max-width: 1500px;
+a,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: inherit;
 }
+
+.container-fluid,
+.row {
+  max-width: 1500px;
+  // margin: 0 auto;
+  // padding: 0;
+}
+
+// * {
+//   outline: 1px solid #f00 !important;
+// }

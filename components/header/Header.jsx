@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Link from "next/link";
 
 import styles from "./header.module.scss";
 
@@ -19,11 +20,13 @@ export const Header = () => {
         <TopBar />
         <div className="row">
           <div className="col-3 col-md-6 col-lg-3 order-2 order-md-1 d-none d-md-flex">
-            <img
-              src={currentTranslations.logo}
-              alt="logo"
-              className={`${styles.logo}`}
-            />
+            <Link href="/" passHref>
+              <img
+                src={currentTranslations.logo}
+                alt="logo"
+                className={`${styles.logo}`}
+              />
+            </Link>
           </div>
           <div
             className={`col-md-6 col-lg-6 order-1 order-md-2 align-items-end ${styles.infoMenu}`}

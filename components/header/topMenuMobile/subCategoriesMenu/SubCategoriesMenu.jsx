@@ -1,13 +1,16 @@
 import React from "react";
-import styles from "./subCategoriesMenu.module.scss"; // Import the SCSS module
+import Link from "next/link";
+import styles from "./subCategoriesMenu.module.scss";
 
-const SubCategoriesMenu = ({ category, onBack }) => {
+const SubCategoriesMenu = ({ category, onBack, onClose }) => {
   return (
     <div className={styles.subCategoriesContainer}>
       <ul className={styles.subCategoryList}>
         {category.subcategories.map((sub) => (
           <li key={sub.id} className={styles.subCategoryItem}>
-            <span>{sub.name}</span>
+            <Link href={`/${sub.id}`}>
+              <span onClick={onClose}>{sub.name}</span>
+            </Link>
           </li>
         ))}
       </ul>

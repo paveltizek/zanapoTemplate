@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import Link from "next/link";
 import { DataContext } from "../../contexts/DataContext";
 import SubCategoriesMenu from "./subCategoriesMenu/SubCategoriesMenu";
 import styles from "./topMenuMobile.module.scss";
@@ -8,13 +9,27 @@ const TopMenuMobile = ({ onClose }) => {
   const [expandedCategory, setExpandedCategory] = useState(null);
   const [isActive, setIsActive] = useState(false);
   const [isSliding, setIsSliding] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkViewportWidth = () => {
+      setIsMobile(window.matchMedia("(max-width: 991px)").matches);
+    };
+
+    checkViewportWidth();
+    window.addEventListener("resize", checkViewportWidth);
+
+    return () => {
+      window.removeEventListener("resize", checkViewportWidth);
+    };
+  }, []);
 
   const handleExpandClick = (category) => {
     setIsSliding(true);
     setTimeout(() => {
       setExpandedCategory(category);
       setIsSliding(false);
-    }, 300); // Match this duration to the CSS transition duration
+    }, 300);
   };
 
   const handleBackToCategories = () => {
@@ -22,7 +37,7 @@ const TopMenuMobile = ({ onClose }) => {
     setTimeout(() => {
       setExpandedCategory(null);
       setIsSliding(false);
-    }, 300); // Match this duration to the CSS transition duration
+    }, 300);
   };
 
   useEffect(() => {
@@ -33,6 +48,10 @@ const TopMenuMobile = ({ onClose }) => {
     setIsActive(false);
     setTimeout(onClose, 300);
   };
+
+  if (!isMobile) {
+    return null;
+  }
 
   return (
     <div className={styles.overlay}>
@@ -72,14 +91,18 @@ const TopMenuMobile = ({ onClose }) => {
           {!expandedCategory ? (
             <ul>
               {topMenu.map((category) => (
-                <li key={category.name}>
+                <li key={category.id}>
                   <div>
-                    <img
-                      src={`https://zanapo.cz/${category.image}`}
-                      alt=""
-                      width={30}
-                    />
-                    <span>{category.name}</span>
+                    <Link href={`/${category.id}`} passHref>
+                      <span onClick={handleClose}>
+                        <img
+                          src={`https://zanapo.cz/${category.image}`}
+                          alt={category.name}
+                          width={30}
+                        />
+                        {category.name}
+                      </span>
+                    </Link>
                     {category.subcategories &&
                     category.subcategories.length > 0 ? (
                       <button onClick={() => handleExpandClick(category)}>
@@ -108,6 +131,7 @@ const TopMenuMobile = ({ onClose }) => {
             <SubCategoriesMenu
               category={expandedCategory}
               onBack={handleBackToCategories}
+              onClose={handleClose}
             />
           )}
         </div>

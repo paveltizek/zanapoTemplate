@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import Category from "./category/Category";
 import styles from "./menubutton.module.scss";
@@ -6,6 +6,21 @@ import styles from "./menubutton.module.scss";
 export const MenuButton = () => {
   const { topMenu } = useContext(DataContext);
   const [hoveredCategoryName, setHoveredCategoryName] = useState(null);
+  const [showCategories, setShowCategories] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkViewportWidth = () => {
+      setIsDesktop(window.matchMedia("(min-width: 992px)").matches);
+    };
+
+    checkViewportWidth();
+    window.addEventListener("resize", checkViewportWidth);
+
+    return () => {
+      window.removeEventListener("resize", checkViewportWidth);
+    };
+  }, []);
 
   const handleHover = (name) => {
     setHoveredCategoryName(name);
@@ -19,8 +34,20 @@ export const MenuButton = () => {
     setHoveredCategoryName(null);
   };
 
+  const handleCloseMenu = () => {
+    setShowCategories(false);
+  };
+
+  const handleOpenMenu = () => {
+    setShowCategories(true);
+  };
+
+  if (!isDesktop) {
+    return null;
+  }
+
   return (
-    <div className={styles.menuButton}>
+    <div className={styles.menuButton} onMouseEnter={handleOpenMenu}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="28"
@@ -45,17 +72,20 @@ export const MenuButton = () => {
         ></path>
       </svg>
       {/* Dropdown Menu */}
-      <ul className={styles.dropdown} onMouseLeave={handleMenuLeave}>
-        {topMenu.map((category) => (
-          <Category
-            key={category.name}
-            category={category}
-            isHovered={hoveredCategoryName === category.name}
-            onHover={() => handleHover(category.name)}
-            onUnhover={handleUnhover}
-          />
-        ))}
-      </ul>
+      {showCategories && (
+        <ul className={styles.dropdown}>
+          {topMenu.map((category) => (
+            <Category
+              key={category.name}
+              category={category}
+              isHovered={hoveredCategoryName === category.name}
+              onHover={() => setHoveredCategoryName(category.name)}
+              onUnhover={() => setHoveredCategoryName(null)}
+              onCloseMenu={handleCloseMenu}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

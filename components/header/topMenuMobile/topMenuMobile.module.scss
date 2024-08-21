@@ -88,10 +88,15 @@
     div {
       gap: 10px;
       display: flex;
-      align-items: center;
 
-      span {
+      a {
         flex-grow: 1;
+
+        span {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
       }
     }
 

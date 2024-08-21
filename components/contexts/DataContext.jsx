@@ -14,7 +14,7 @@ export const DataProvider = ({ children }) => {
   const fetchHomepageData = async () => {
     try {
       const response = await fetch(
-        "https://crappie-enormous-noticeably.ngrok-free.app/api/v1/homepage/content?sections=51,55&elements=toplinks,tips,favouritecategories",
+        "http://pavel-fedora.tailcfce08.ts.net:8000//api/v1/homepage/content?sections=51,55&elements=toplinks,tips,favouritecategories",
         {
           method: "GET",
           headers: {
