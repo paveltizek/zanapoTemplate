@@ -76,7 +76,7 @@ const Category = ({
       onMouseLeave={handleCategoryMouseLeave}
     >
       <div className={styles.categoryContent}>
-        <Link href={`/${category.id}`} onClick={onCloseMenu}>
+        <Link href={`${category.url}`} onClick={onCloseMenu}>
           <Image
             src={`https://zanapo.cz/${category.image}`}
             alt={category.name}
@@ -97,7 +97,7 @@ const Category = ({
           {category.subcategories &&
             category.subcategories.map((subcategory) => (
               <li key={subcategory.id} className={styles.subcategoryItem}>
-                <Link href={`/${subcategory.id}`} onClick={onCloseMenu}>
+                <Link href={`${subcategory.url}`} onClick={onCloseMenu}>
                   <Image
                     src={`https://zanapo.cz/${subcategory.image}`}
                     alt={subcategory.name}

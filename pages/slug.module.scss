@@ -3,5 +3,62 @@
 .contentWrapper {
   background-color: $grey-color;
   box-shadow: $myInsetBoxShadow;
-  padding: 20px 0;
+  padding: 10px 0;
+}
+
+.subcategoryCard {
+  background-color: $white-color;
+  border-radius: $my-border-radius;
+  box-shadow: $myMediumBoxShadow;
+  text-align: center;
+  padding: 10px;
+
+  //padding: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $myHoverBoxShadow;
+  }
+}
+
+.subcategoryImage {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  //margin-bottom: 10px;
+  //border-radius: 4px;
+}
+
+.subcategoryName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  //color: $primary-color;
+  //margin: 8px 0 0;
+}
+
+.topProducts {
+  margin: 10px 0;
+
+  .topHeading {
+    padding: 5px 0;
+  }
+
+  .productCard {
+    background-color: $white-color;
+    box-shadow: $myMediumBoxShadow;
+    border-radius: $my-border-radius;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $myHoverBoxShadow;
+    }
+  }
 }
