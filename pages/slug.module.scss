@@ -4,6 +4,90 @@
   background-color: $grey-color;
   box-shadow: $myInsetBoxShadow;
   padding: 10px 0;
+
+  a {
+    color: $orange-color;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  h2 {
+    margin-bottom: 10px;
+  }
+
+  .categoryText {
+    font-weight: $category-description-weight;
+    margin-bottom: 10px;
+  }
+
+  .element {
+    //margin-left: -40px;
+    padding-left: 0 !important;
+    display: flex;
+    flex-grow: 1;
+    ul {
+      list-style-type: none;
+      padding: 0;
+
+      display: flex;
+      gap: 10px;
+
+      li {
+        background-color: white;
+        padding: 5px;
+        font-size: $help-element;
+        font-weight: $help-element-weight;
+        font-family: $help-element-font;
+        margin-top: 20px;
+        &::before {
+          content: "?";
+          color: $orange-color;
+        }
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .buttonWrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: relative;
+    // margin-top: 5px;
+
+    //border-top: solid 1px;
+    &::after {
+      content: "";
+      width: 100%;
+      border-top: 2px dotted $darker-grey-color;
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      z-index: 0;
+    }
+    .descriptionToggleButton {
+      border: none;
+      background-color: $grey-color;
+      display: flex;
+      z-index: 1;
+
+      svg {
+        fill: $orange-color;
+      }
+
+      .arrowIcon.opened {
+        transform: rotate(180deg);
+      }
+    }
+  }
 }
 
 .subcategoryCard {
@@ -31,8 +115,8 @@
 }
 
 .subcategoryName {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: $category-products-headings;
+  font-weight: $category-products-headings-weight;
   //color: $primary-color;
   //margin: 8px 0 0;
 }
@@ -55,7 +139,52 @@
     flex-direction: row;
     align-items: center;
     transition: transform 0.2s, box-shadow 0.2s;
+    //flex-wrap: wrap;
+    position: relative;
 
+    .productImage {
+      object-fit: contain;
+    }
+
+    .productText {
+      //flex-grow: 1;
+      //max-width: calc(100% - 150px);
+      margin-left: 10px;
+
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+
+      .productName {
+        font-size: $category-top-seller-heading;
+        font-weight: $category-top-seller-heading-weight;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+      }
+
+      .productDescription {
+        font-size: $category-top-seller-description;
+        font-weight: $category-top-seller-description-weight;
+        // white-space: nowrap;
+        // overflow: hidden;
+        // text-overflow: ellipsis;
+      }
+    }
+
+    .productPrice {
+      //display: flex;
+      //justify-content: flex-end;
+      //justify-content: flex-end;
+      //align-self: flex-end;
+      //flex-grow: 1;
+      position: absolute;
+      font-size: $category-top-seller-price;
+      font-weight: $category-top-seller-price-weight;
+      color: $orange-color;
+      bottom: 0;
+      //right: -150px;
+    }
     &:hover {
       transform: translateY(-1px);
       box-shadow: $myHoverBoxShadow;
