@@ -21,6 +21,8 @@ $myMenuBoxShadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
   rgba(0, 0, 0, 0.5) 0px 0px 1px 0px;
 $myInsetBoxShadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 $myHoverBoxShadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+$myBreadCrumbInsetShadow: inset 0 0 4px rgba(0, 0, 0, 0.15);
+$myBreadCrumbShadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 
 // general variables
 $my-border-radius: 4px;
@@ -75,3 +77,6 @@ $category-top-seller-price-weight: 700;
 $help-element: 13px;
 $help-element-weight: 200;
 $help-element-font: "Courier New", Courier, monospace;
+
+$breadCrumbs-size: 12px;
+$breadCrumbs-weight: 300;
