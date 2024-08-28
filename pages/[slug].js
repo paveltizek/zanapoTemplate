@@ -39,7 +39,7 @@ const CategoryPage = ({ data }) => {
   };
 
   return (
-    <div className={`${styles.contentWrapper}`}>
+    <section className={`${styles.contentWrapperHead}`}>
       <div className="container-fluid">
         <div className="col-12 pb-3">
           <svg
@@ -52,9 +52,9 @@ const CategoryPage = ({ data }) => {
             <path
               d="M2.25 12L11.2045 3.04549C11.6438 2.60615 12.3562 2.60615 12.7955 3.04549L21.75 12M4.5 9.75V19.875C4.5 20.4963 5.00368 21 5.625 21H9.75V16.125C9.75 15.5037 10.2537 15 10.875 15H13.125C13.7463 15 14.25 15.5037 14.25 16.125V21H18.375C18.9963 21 19.5 20.4963 19.5 19.875V9.75M8.25 21H16.5"
               stroke="#0F172A"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
           dropbecky
@@ -112,36 +112,29 @@ const CategoryPage = ({ data }) => {
           </div>
 
           {/* Top Sellers Section */}
-          <div className={`col-lg-5 align-self-start ${styles.topProducts}`}>
+          <div className={`col-lg-5  ${styles.topProducts}`}>
             <h4 className={styles.topHeading}>Nejprodávanější</h4>
-            <div className="row">
-              {bestProducts.map((product) => (
-                <div key={product.variant_id} className="col-12 ">
-                  <div className={`${styles.productCard} `}>
-                    <div className="productImageWrapper">
-                      <Image
-                        src={`https://zanapo.cz/${product.image}`}
-                        alt={product.name}
-                        width={100}
-                        height={100}
-                        className={`${styles.productImage} img-fluid`}
-                      />
-                    </div>
-                    <div className={`${styles.productText}`}>
-                      <h4 className={styles.productName}>{product.name}</h4>
-                      <p
-                        className={`d-none d-md-block ${styles.productDescription}`}
-                      >
-                        {product.description_short}
-                      </p>
-                    </div>
-                    <p className={`${styles.productPrice}`}>
-                      {product.price_f}
-                    </p>
-                  </div>
+            {bestProducts.map((product) => (
+              <div key={product.variant_id} className={styles.productCard}>
+                <div className="productImageWrapper">
+                  <Image
+                    src={`https://zanapo.cz/${product.image}`}
+                    alt={product.name}
+                    width={100}
+                    height={100}
+                    className={`${styles.productImage} img-fluid`}
+                  />
                 </div>
-              ))}
-            </div>
+                <div className={`${styles.productText} `}>
+                  <h4 className={styles.productName}>{product.name}</h4>
+                  <p className={`${styles.productDescription}`}>
+                    {product.description_short}
+                  </p>
+
+                  <p className={`${styles.productPrice}`}>{product.price_f}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
@@ -175,7 +168,7 @@ const CategoryPage = ({ data }) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 export async function getServerSideProps({ params }) {
