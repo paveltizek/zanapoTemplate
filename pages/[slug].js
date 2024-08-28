@@ -73,8 +73,8 @@ const CategoryPage = ({ data }) => {
 
     try {
       const response = await fetch(
-        // `https://api.test.zanapo.cz/api/v1/url/content?requested_path=${selectedFilterUrl}&elements=categoryfaq`
-        `http://pavel-fedora.tailcfce08.ts.net:8000/api/v1/url/content?requested_path=${selectedFilterUrl}&elements=categoryfaq`
+        `https://api.test.zanapo.cz/api/v1/url/content?requested_path=${selectedFilterUrl}&elements=categoryfaq`
+        // `http://pavel-fedora.tailcfce08.ts.net:8000/api/v1/url/content?requested_path=${selectedFilterUrl}&elements=categoryfaq`
       );
       const data = await response.json();
 
@@ -114,8 +114,8 @@ export async function getServerSideProps({ params }) {
   const { slug } = params;
 
   const res = await fetch(
-    // `https://api.test.zanapo.cz/api/v1/url/content?requested_path=/${slug}&elements=categoryfaq`,
-    `http://pavel-fedora.tailcfce08.ts.net:8000/api/v1/url/content?requested_path=/${slug}&elements=categoryfaq`,
+    `https://api.test.zanapo.cz/api/v1/url/content?requested_path=/${slug}&elements=categoryfaq`,
+    // `http://pavel-fedora.tailcfce08.ts.net:8000/api/v1/url/content?requested_path=/${slug}&elements=categoryfaq`,
     {
       method: "GET",
       headers: {
